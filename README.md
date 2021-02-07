@@ -13,7 +13,7 @@ Single-cell omics assays such as RNA-Seq, ATAC-Seq and methylome sequencing have
 #### standalone installation
 In Command Window type:
 ```
-git clone https://github.com/software-github/GLUER0/tree/pool-atom
+git clone https://github.com/software-github/GLUER/tree/main
 cd GLUER0/dist
 pip install GLUER.tar.gz
 or
