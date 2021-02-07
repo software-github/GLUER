@@ -52,7 +52,7 @@ This dashboard is to explore the integrative analysis results using GLUER. The m
 * the three windows are idependent from each other.
 * the differential analysis and downloading funciton of plotting data will make users to custermize their analysis needs.
 
-More details of this Dashboard are found here. We have been keeping updating the functions of this dashboard. Please let me know if you have any suggestions for this dashboard.
+More details of this Dashboard are found here. We have been keeping updating the functions of this dashboard. Please let us know if you have any suggestions for this dashboard.
 
 <p align="center">
 <img src="src/gluer/data/GUI_tutorial.png">
@@ -64,4 +64,4 @@ More details of this Dashboard are found here. We have been keeping updating the
 Please feel free to contact Tao Peng (software.github@gmail.com) or Kai Tan (tank1@chop.edu) if you have any questions about the software.
 
 ## Reference
-Peng, Tao, et al. "GLUER: integrative analysis of multi-omics and imaging data at single-cell resolution by deep neural networks"
+Peng, Tao, et al. "GLUER: integrative analysis of multi-omics and imaging data at single-cell resolution by deep neural networks". <a href="https://www.biorxiv.org/content/10.1101/2021.01.25.427845v1">bioRxiv</a>
