@@ -29,10 +29,10 @@ import scanpy as sc
 import gluer as gr
 
 # load the data
-rna_data, acc_data,  = gr.load_demo_data()
+rna_data, acc_data, gluer_data = gr.load_demo_data()
 
 # run GLUER
-gluer_obj = gr.gluer(ref_demo_sub, query_demo_sub, batch_categories=['RNA','ACC'])
+gluer_obj = gr.gluer(rna_data, acc_data, batch_categories=['RNA','ACC'])
 
 # run umap_cell_embeddings
 gluer_obj = gr.run_umap(gluer_obj,n_neighbors = 40, min_dist = 0)
