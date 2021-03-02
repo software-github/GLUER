@@ -27,26 +27,26 @@ import pkg_resources
 
 
 def gluer(ref_obj,
-          query_obj,
-          joint_rank=20,
-          joint_max_iter=200,
-          joint_random_seed=21,
-          mnn_ref=30,
-          mnn_query=30,
-          filter_n1=50,
-          filter_n2=50,
-          N=3,
-          n_jobs=1,
-          n_features=15000,
-          is_impute=True,
-          filter_n_features=[15000, 15000],
-          pairs=None,
-          deep_random_seed=44,
-          deepmodel_epoch=500,
-          batch_categories=['1', '2'],
-          model=None,
-          validation_split=.1,
-          verbose=0):
+               query_obj,
+               joint_rank=20,
+               joint_max_iter=200,
+               joint_random_seed=21,
+               mnn_ref=30,
+               mnn_query=30,
+               filter_n1=50,
+               filter_n2=50,
+               N=3,
+               n_jobs=1,
+               n_features=15000,
+               is_impute=True,
+               filter_n_features=[15000, 15000],
+               pairs=None,
+               deep_random_seed=44,
+               deepmodel_epoch=500,
+               batch_categories=['1', '2'],
+               model=None,
+               validation_split=.1,
+               verbose=0):
     """Short summary.
 
     Parameters
@@ -237,7 +237,7 @@ def gluer(ref_obj,
         output_dim = y_train.shape[1]
         # train the deep learning model
         if model is None:
-            tf.random.set_seed(deep_random_seed)
+            tf.random.set_random_seed(deep_random_seed)
             start_time = time.time()
             model = tf.keras.Sequential()
             model.add(layers.Dense(input_dim, activation='relu'))
@@ -283,17 +283,17 @@ def gluer(ref_obj,
                    data_query_raw.loc[:, gdata.var.index.values]]).to_numpy())
 
     # set up the dimension reduction
-    keys_gdata = gdata.obsm.keys()
-    for k in keys_gdata:
-        kk = re.sub("pca", "pca_raw", k)
-        if k != kk:
-            gdata.obsm[kk] = gdata.obsm[k]
-        kk = re.sub("tsne", "tsne_raw", k)
-        if k != kk:
-            gdata.obsm[kk] = gdata.obsm[k]
-        kk = re.sub("umap", "umap_raw", k)
-        if k != kk:
-            gdata.obsm[kk] = gdata.obsm[k]
+#     keys_gdata = gdata.obsm.keys()
+#     for k in keys_gdata:
+#         kk = re.sub("pca", "pca_raw", k)
+#         if k != kk:
+#             gdata.obsm[kk] = gdata.obsm[k]
+#         kk = re.sub("tsne", "tsne_raw", k)
+#         if k != kk:
+#             gdata.obsm[kk] = gdata.obsm[k]
+#         kk = re.sub("umap", "umap_raw", k)
+#         if k != kk:
+#             gdata.obsm[kk] = gdata.obsm[k]
 
     gdata.obsm['igluer'] = y_pred_ref
     gdata.uns['joint_nmf'] = vars(model_joint)
@@ -342,7 +342,7 @@ def gluer(ref_obj,
 
 def run_impute(gluer_obj, k=20, isweights=True):
 
-    y_pred_ref = gluer_obj.obsm['X_gluer']
+    y_pred_ref = gluer_obj.obsm['igluer']
     N_ref_obj = gluer_obj.uns['dataset']['ref'].shape[1]
 
     similarity_gluer = pd.DataFrame(pairwise_distances(y_pred_ref,
@@ -377,7 +377,7 @@ def run_umap(gdata,
     mapper = umap.UMAP(n_neighbors=n_neighbors,
                        min_dist=min_dist,
                        n_components=2,
-                       metric=metric).fit(gdata.obsm['X_gluer'])
+                       metric=metric).fit(gdata.obsm['igluer'])
 
     gdata.obsm['X_umap'] = mapper.embedding_
     return gdata
