@@ -9,7 +9,7 @@ License: UNKNOWN
 Description: <img src="src/gluer/data/gluer_icon.png" align="left" width="180" height="180"> <h1 style=“text-align:left”>GLUER: integrative analysis of multi-omics and imaging data at single-cell resolution by deep neural networks </h1>
         <br>
         
-        ## GLUER has been implemented in Python.
+        ## GLUER is implemented in Python.
         
         Single-cell omics assays such as RNA-Seq, ATAC-Seq and methylome sequencing have been developed to identify cell types and/or states in heterogeneous tissues. However, it is challenging to integrate these different types of single-cell omics data. Moreover, the advent of spatially resolved single-cell imaging data represent another challenge for integrative analysis with omics data. Here, we present a new algorithm, inteGrative anaLysis of mUlti-omics at single-cEll Resolution (GLUER), for integration of single-cell multi-omics data as well as imaging data. We tested GLUER using multiple datasets generated using multiomics data generated on the same single cells, which was taken as the ground truth. Our results demonstrate that GLUER has significantly improved performance in terms of the accuracy of matching cells with different data modalities, which in turn enhances downstream analyses such as clustering and trajectory inference. GLUER provides a principled analytical framework for studying the heterogeneity of cell populations using multi-omics and imaging data.
         
